@@ -1,0 +1,68 @@
+Ideas
+
+import .arx or .zip
+
+- if .zip then -- unzip
+check for one.arx and max one directory
+
+- if files selected then show files as links ???
+
+
+
+
+Export viewed file as new .arx
+or .csv or .json or .xml
+
+Convert column of 0,1,2 == "New","Open","Closed" (hand defined)
+Info is stored in same folder/name of the export file -- so it would be reusable.
+
+
+Possibly create a naming pack - to use with .arx load
+
+So -- load your .arx,
+
+Then load - view_rules.
+
+view_rules
+
+(rename columns)
+(map values to "other values")
+(possibly a "query" -- only show where "Status == 1")
+
+
+
+
+Query 
+(select status field -- gives list of choices -- select one or two ???)
+
+Possibly - query by regex
+
+
+Import into ARS server 
+(Needs access to server)
+
+
+Import as merge -- or import as submit or import as modify or - delete matching???
+
+
+Individual record modify (in memory) - so when you export the def as arx -- you get "your version"
+
+Rename to ARX Works 
+
+Ability to move columns left right in display.
+
+Ability to sort columns
+
+
+
+"Analyze" -- ability to get a data feel - by question.
+
+"Analyze" -- ability to pivot table two columns
+
+
+
+
+
+
+
+
