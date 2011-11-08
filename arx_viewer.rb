@@ -8,7 +8,6 @@ require 'zip/zip'
 
 require 'fileutils'
 require 'Date'
-require 'utils'
 
 require File.join(File.dirname(__FILE__),'arx_parse')
 require File.join(File.dirname(__FILE__),'utils')
