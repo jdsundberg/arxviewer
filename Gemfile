@@ -12,7 +12,8 @@ platforms :jruby do
     # gem 'jdbc-mysql', :require => false
     # gem 'jdbc-sqlite3', :require => false
 
-  gem 'sinatra'
+#  gem 'sinatra'
+gem 'sinatra', '1.2.7' 
   gem 'haml'
   gem 'uuidtools'
   gem 'rubyzip'   # 'zip/zip'
