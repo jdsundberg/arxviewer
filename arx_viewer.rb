@@ -1,14 +1,18 @@
 require 'rubygems'
+require "bundler/setup"
+
 require 'sinatra'
 require 'haml'
+require 'uuidtools'
+require 'zip/zip'
 
 require 'fileutils'
-require 'uuidtools'
 require 'Date'
-require 'zip/zip'
 require 'utils'
 
-require 'arx_parse'
+require File.join(File.dirname(__FILE__),'arx_parse')
+require File.join(File.dirname(__FILE__),'utils')
+
 
 @@root_dir = "uploads"
 
@@ -37,7 +41,8 @@ post "/upload" do
     Dir.mkdir(new_directory)
     write_file("#{new_directory}/#{new_filename}", params['myfile'][:tempfile])
 
-    unzip("#{new_directory}/#{new_filename}", new_directory)
+    # TODO - reapply zip -- could not find gem for bundler
+#    unzip("#{new_directory}/#{new_filename}", new_directory)
     validate_file(new_filename)
     parse_file = ""
 
