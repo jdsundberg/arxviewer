@@ -3,16 +3,14 @@
     .page-header
       %h1
         This does not display
-      &= @file_contents["schema"]
-      &= @file_contents["data_count"]
-      rows
       .row
         .span10
           %h2
-            Main content
+            &= @file_contents["schema"]
         .span4
           %h3
-            Secondary
+            &= @file_contents["data_count"]
+            rows
 .container
   .content
     %table.zebra-striped
