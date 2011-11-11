@@ -34,6 +34,9 @@
               - field.each do |element|
                 %td
                   - reg_ex = Regexp.new("#{re_rows}|#{re_columns}")
+                  - if(element.class == Time)
+                    &= element
+                    - next
                   - if(element.scan(reg_ex).size > 0)
                     - tmprows = element.to_s.split(re_rows)
                     - tmprows.each_with_index do |tmprow,r_index|
@@ -41,9 +44,9 @@
                       - tmp.each_with_index do |e,c_index|
                         &= e
                         - if (c_index < tmp.size)
-                          = "&nbsp;"
+                          &nbsp;
                       - if(r_index < tmprows.size) 
-                        = "<br/>"
+                        <br/>
                   - else
                     &= element
                     
