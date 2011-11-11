@@ -1,51 +1,72 @@
-#idx1.blocktable
-  %h2
-    %span 
-      &= @orig_file_name
-  .box
-    .inbox
-      %table{:cellspacing => "0"}
-        %thead
-        %tr
-          %th.tcl{:scope => "col"} Column
-          %th.tc4{:scope => "col"} Value
-
-
-        %tbody
-          %tr
-            %td
-              Schema Name
-            %td
-              &= @meta_info["schema"]
-
-          %tr
-            %td
-              Data rows
-            %td
-              &= @meta_info["data_count"] 
-
+.container
+  .content
+    .page-header
+      %h1
+        This does not display
+      .row
+        .span10
+          %h2
+            &= @orig_file_name
+            &nbsp;&dash;&nbsp;
+            &= @meta_info["schema"]
+        .span4
+          %h3
+            &= @meta_info["data_count"]
+            rows
+        
   %form{:action=>"/display/#{@meta_info['new_filename']}",:method=>"post",:enctype=>"multipart/form-data"}           
-    .box
-      .inbox
-        %table{:cellspacing => "0"}
-          %thead
+    %table.zebra-striped
+      %thead
+      %tr
+        %th 
+          FieldName
+        %th
+          Notes
+        %th
+          FieldNumber
+        %th
+          DataType
+
+      %tbody
+        - @meta_info["fields"].each_index do |index|
           %tr
-            %th.tcl{:scope => "col"} FieldName
-            %th.tc4{:scope => "col"} FieldNumber
-            %th.tc4{:scope => "col"} DataType
+            %td
+              %input{:type=>"checkbox", :name=>"#{@meta_info["fieldid"][index]}", :value=>1}
+              &= @meta_info["fields"][index]
+            %td
+              - if((@meta_info["analysis_has_data"][index]==true) && (@meta_info["analysis_missing_data"][index] == true))  
+                %span{:class => "label important"}
+                  Missing data
+                &nbsp;
+              - if(@meta_info["analysis_has_data"][index].nil?)  
+                %span{:class => "label warning"}
+                  No data
+                &nbsp;
 
+            %td
+              &= @meta_info["fieldid"][index]
+            %td
+              &= @meta_info["dtypes"][index] 
+    %input{:class => 'btn primary', :type=>"submit",:value=>"Display"}
 
-          %tbody
-            - @meta_info["fields"].each_index do |index|
-              %tr
-                %td
-                  %input{:type=>"checkbox", :name=>"#{@meta_info["fieldid"][index]}", :value=>1}
-                  &= @meta_info["fields"][index]
-                %td
-                  &= @meta_info["fieldid"][index]
-                %td
-                  &= @meta_info["dtypes"][index] 
-    %input{:type=>"submit",:value=>"Display"}
-
+.container
+  .content
+    %span{:class => "label important"}
+      Missing data
+    &nbsp;
+    &dash;
+    Some rows found missing data in this column.
+    %br
+    %span{:class => "label warning"}
+      No data
+    &nbsp;
+    &dash;
+    No data was found in this column.
+    %br
+    %span{:class => "label success"}
+      Selection
+    &nbsp;
+    &dash;
+    This column has selection values.
 
                 

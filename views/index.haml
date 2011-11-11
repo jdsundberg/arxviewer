@@ -1,11 +1,16 @@
-#idx1.blocktable
-  %h2
-    %span 
-      Upload your files here
-    %form(method="post" action="/upload" enctype='multipart/form-data')
-      %input(type='file' name='myfile')
-      %br
-      %input(type='submit' value='Upload!')
+.container
+  .content
+    .page-header
+      %h1
+        This does not display
+      %h2
+        %span{:class => "label important"}
+          Upload your files here
+        .row
+        %form(method="post" action="/upload" enctype='multipart/form-data')
+          %input(type='file' name='myfile')
+          %br
+          %input{:class => 'btn primary', :type=>'submit', :value=>'Upload!'}
 
   
 

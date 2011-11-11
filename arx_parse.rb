@@ -60,8 +60,13 @@ def parse_arx_meta(arx_file)
 end
 
 def parse_arx(arx_file,skip)
+# Skip is no longer relevant - as I want to analyze the data - so we always
+# read the entire file
+
   meta = Hash.new
   meta["data"]=Array.new
+  meta["analysis_has_data"]=Array.new
+  meta["analysis_missing_data"]=Array.new
   counter = 0
   status_history_index = nil
   begin
@@ -72,9 +77,20 @@ def parse_arx(arx_file,skip)
       
       if (/^DATA /.match(line)) then
         counter = counter + 1
-        if (skip==false) then 
-          meta["data"] << parse_arx_data(line)
-        end
+
+          parsed_line = parse_arx_data(line)
+          meta["data"] << parsed_line
+
+          # Look for missing and existing data
+          parsed_line.each_with_index do |element,index|
+            if (element.nil? || element.size == 0) then
+              meta["analysis_missing_data"][index] = true
+            else
+              meta["analysis_has_data"][index] = true
+            end
+            
+          end
+
       end
 
       if (/^SCHEMA "(.*)"/.match(line)) then
