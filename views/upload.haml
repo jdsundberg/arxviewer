@@ -46,7 +46,11 @@
             %td
               &= @meta_info["fieldid"][index]
             %td
-              &= @meta_info["dtypes"][index] 
+              &= @meta_info["dtypes"][index]
+              - if(@meta_info["dtypes"][index] == "ENUM")
+                %span{:class => "label success"}
+                  Selection
+                  
     %input{:class => 'btn primary', :type=>"submit",:value=>"Display"}
 
 .container

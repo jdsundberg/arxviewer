@@ -3,9 +3,14 @@
     .page-header
       %h1
         This does not display
-      %h2
+      .row
+      %h2{:align=>"center"}
+        Taking the pain out of your ARX
+      %p{:align=>"center"}
+        %img{:src=>"ARXViewer.jpg"}
+      %p
         %span{:class => "label important"}
-          Upload your files here
+          Upload your file here
         .row
         %form(method="post" action="/upload" enctype='multipart/form-data')
           %input(type='file' name='myfile')
